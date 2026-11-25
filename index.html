@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sofram Restaurant · Menü</title>
+<meta name="description" content="Sofram Restaurant Niğde – kebap, ızgara, pide ve tatlı menüsü.">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#faf6f0;--card:#fff;--ink:#2b1d14;--mut:#7a6a5c;--acc:#b23a1e;--line:#eadfd2}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.45 Inter,system-ui,sans-serif}
+header{background:linear-gradient(160deg,#3a1f12,#7a2a14);color:#fff;padding:36px 16px 28px;text-align:center}
+h1{font:600 2.2rem Fraunces,serif;letter-spacing:.5px}
+header p{opacity:.85;margin-top:4px}
+.rate{display:inline-block;margin-top:10px;background:#ffffff22;padding:4px 12px;border-radius:99px;font-size:.9rem}
+.btns{display:flex;gap:8px;justify-content:center;margin-top:18px;flex-wrap:wrap}
+.btns a{background:#fff;color:var(--ink);text-decoration:none;padding:10px 16px;border-radius:10px;font-weight:600;font-size:.95rem}
+nav{position:sticky;top:0;background:var(--bg);border-bottom:1px solid var(--line);display:flex;gap:6px;overflow-x:auto;padding:10px 16px;z-index:2}
+nav a{flex:none;text-decoration:none;color:var(--ink);border:1px solid var(--line);background:var(--card);padding:6px 14px;border-radius:99px;font-size:.9rem;white-space:nowrap}
+main{max-width:720px;margin:auto;padding:8px 16px 40px}
+h2{font:600 1.4rem Fraunces,serif;margin:28px 0 10px;scroll-margin-top:60px}
+.item{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:8px;display:flex;justify-content:space-between;gap:12px}
+.item b{display:block}
+.item small{color:var(--mut)}
+.p{color:var(--acc);font-weight:600;white-space:nowrap}
+.info{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin-top:28px}
+footer{text-align:center;color:var(--mut);font-size:.8rem;padding:20px 16px 32px}
+</style>
+</head>
+<body>
+<header>
+  <h1>Sofram</h1>
+  <p>Kebap &amp; Türk Mutfağı · Niğde</p>
+  <span class="rate">★ 4,0 · 1.700+ Google yorumu</span>
+  <div class="btns">
+    <a href="tel:+903882210524">📞 Ara</a>
+    <a href="https://www.google.com/maps/search/?api=1&query=Sofram+Restaurant+Ni%C4%9Fde">📍 Yol tarifi</a>
+  </div>
+</header>
+
+<nav id="nav"></nav>
+<main id="menu"></main>
+
+<main>
+  <div class="info">
+    <b>Adres</b><p>Aşağı Kayabaşı, Özdemirler Sitesi İç Yolu No:30, Niğde Merkez</p>
+    <br><b>Telefon</b><p><a href="tel:+903882210524">(0388) 221 05 24</a></p>
+    <br><b>Kapanış</b><p>Her gün 23:00</p>
+  </div>
+</main>
+<footer>Fiyatlara KDV dahildir.<br>Tanıtım amaçlı örnek sayfadır.</footer>
+
+<script>
+// Fiyatlar Yemeksepeti'den alındı (25.11.2026); restoranla teyit edilecek.
+const MENU = {
+  "Kebap & Izgara": [
+    ["Adana Kebap","Közlenmiş biber, domates ile",490],
+    ["Tavuk Şiş","Közlenmiş biber, domates ile",490],
+    ["Tavuk Kanat","Közlenmiş biber, domates ile",480],
+    ["Kemikli Tavuk","Közlenmiş biber, domates ile",480],
+    ["Izgara Köfte","Izgara domates, biber, soğan ile",745],
+    ["Sarma Beyti","Lavaşa sarılı, yoğurtlu, soslu",895],
+    ["Karışık Izgara","Kuzu pirzola, et şiş, köfte, tavuk, Adana",995],
+    ["Kuzu İncik","Közlenmiş biber, domates ile",995],
+    ["Kaburga Kafes","Kuzu kaburga, mevsim salata, günün mezesi",995],
+    ["Yağlı Kara","Mevsim salata, günün mezesi ile",995]],
+  "Steak & Kırmızı Et": [
+    ["Kuzu Pirzola","Mevsim salata, mezeler ile",995],
+    ["Şaşlık Kebabı","Marine dana bonfile, salata, meze, lavaş",1145],
+    ["Küşleme","Mevsim salata, günün mezesi ile",1145],
+    ["Dana Lokum","Mevsim salata, mezeler ile",1245]],
+  "Fırın": [
+    ["Antep Lahmacun","Domates, maydanoz, limon ile",245],
+    ["Konya Etli Ekmek","Közlenmiş biber, domates ile",445],
+    ["Kaşarlı Pide","Közlenmiş biber, domates ile",445],
+    ["Mevlana Pide","Dana kıyma, kaşar peyniri",475]],
+  "Tatlı": [
+    ["Künefe","Tek kişilik",345],
+    ["Katmer","Tek kişilik",375]]
+};
+const tl = n => n.toLocaleString("tr-TR") + " ₺";
+const slug = s => s.toLowerCase().replace(/[^a-zçğıöşü]+/g,"-");
+let nav="", html="";
+for (const [cat, items] of Object.entries(MENU)) {
+  nav += `<a href="#${slug(cat)}">${cat}</a>`;
+  html += `<h2 id="${slug(cat)}">${cat}</h2>` + items.map(([n,d,p]) =>
+    `<div class="item"><div><b>${n}</b><small>${d}</small></div><span class="p">${tl(p)}</span></div>`).join("");
+}
+document.getElementById("nav").innerHTML = nav;
+document.getElementById("menu").innerHTML = html;
+</script>
+</body>
+</html>
