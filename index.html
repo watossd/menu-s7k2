@@ -2,93 +2,183 @@
 <html lang="tr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Sofram Restaurant · Menü</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sofram · Menü</title>
 <meta name="description" content="Sofram Restaurant Niğde – kebap, ızgara, pide ve tatlı menüsü.">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#16110d">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500;700&family=Playfair+Display+SC:wght@400;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#faf6f0;--card:#fff;--ink:#2b1d14;--mut:#7a6a5c;--acc:#b23a1e;--line:#eadfd2}
-*{box-sizing:border-box;margin:0}
-body{background:var(--bg);color:var(--ink);font:16px/1.45 Inter,system-ui,sans-serif}
-header{background:linear-gradient(160deg,#3a1f12,#7a2a14);color:#fff;padding:36px 16px 28px;text-align:center}
-h1{font:600 2.2rem Fraunces,serif;letter-spacing:.5px}
-header p{opacity:.85;margin-top:4px}
-.rate{display:inline-block;margin-top:10px;background:#ffffff22;padding:4px 12px;border-radius:99px;font-size:.9rem}
-.btns{display:flex;gap:8px;justify-content:center;margin-top:18px;flex-wrap:wrap}
-.btns a{background:#fff;color:var(--ink);text-decoration:none;padding:10px 16px;border-radius:10px;font-weight:600;font-size:.95rem}
-nav{position:sticky;top:0;background:var(--bg);border-bottom:1px solid var(--line);display:flex;gap:6px;overflow-x:auto;padding:10px 16px;z-index:2}
-nav a{flex:none;text-decoration:none;color:var(--ink);border:1px solid var(--line);background:var(--card);padding:6px 14px;border-radius:99px;font-size:.9rem;white-space:nowrap}
-main{max-width:720px;margin:auto;padding:8px 16px 40px}
-h2{font:600 1.4rem Fraunces,serif;margin:28px 0 10px;scroll-margin-top:60px}
-.item{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:8px;display:flex;justify-content:space-between;gap:12px}
-.item b{display:block}
-.item small{color:var(--mut)}
-.p{color:var(--acc);font-weight:600;white-space:nowrap}
-.info{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin-top:28px}
-footer{text-align:center;color:var(--mut);font-size:.8rem;padding:20px 16px 32px}
+:root{
+  --bg:#16110d; --surface:#211913; --surface-2:#2b2119; --line:#3a2d22;
+  --ink:#f6efe6; --mut:#b9a998; --ember:#e8692c; --gold:#d9a441;
+  --r:16px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{background:var(--bg);color:var(--ink);font:16px/1.5 Karla,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+svg{width:20px;height:20px;flex:none}
+
+/* HERO */
+.hero{position:relative;min-height:72vh;display:flex;align-items:flex-end;padding:0 20px 36px;
+  background:url(img/hero.jpg) center/cover;isolation:isolate}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(180deg,rgba(22,17,13,.15) 0%,rgba(22,17,13,.55) 45%,var(--bg) 100%)}
+.hero-in{max-width:720px;margin:0 auto;width:100%}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.eyebrow::before{content:"";width:28px;height:1px;background:var(--gold)}
+h1{font:700 clamp(3rem,13vw,4.6rem)/1 "Playfair Display SC",serif;margin:10px 0 8px;letter-spacing:.02em}
+.sub{color:var(--mut);font-size:1.05rem}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.pill{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.08);backdrop-filter:blur(8px);
+  border:1px solid rgba(255,255,255,.12);padding:6px 12px;border-radius:99px;font-size:.88rem}
+.pill svg{width:15px;height:15px;color:var(--gold)}
+.open{color:#7fd6a0}
+.cta{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:22px}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;min-height:50px;border-radius:14px;
+  font-weight:700;text-decoration:none;transition:transform .15s,background .2s}
+.btn:active{transform:scale(.97)}
+.btn-p{background:var(--ember);color:#fff}
+.btn-s{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18)}
+.btn:focus-visible,.chip:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:5;background:rgba(22,17,13,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:12px 20px;max-width:720px;margin:auto;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;min-height:40px;display:flex;align-items:center;padding:0 16px;border-radius:99px;text-decoration:none;
+  border:1px solid var(--line);color:var(--mut);font-weight:500;font-size:.93rem;transition:all .2s}
+.chip.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+
+/* MENU */
+main{max-width:720px;margin:auto;padding:8px 20px 24px}
+section{padding-top:32px;scroll-margin-top:64px}
+h2{font:700 1.7rem "Playfair Display SC",serif;display:flex;align-items:baseline;gap:12px;margin-bottom:16px}
+h2 small{font:500 .85rem Karla,sans-serif;color:var(--mut)}
+.feat{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:12px}
+.fcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.fcard img{width:100%;aspect-ratio:1;object-fit:cover;display:block}
+.fcard div{padding:10px 12px 12px}
+.fcard b{display:block;font-size:1rem;line-height:1.25}
+.row{display:flex;gap:14px;align-items:center;padding:14px 0;border-bottom:1px dashed var(--line)}
+.row:last-child{border-bottom:0}
+.row img{width:76px;height:76px;border-radius:12px;object-fit:cover;flex:none;background:var(--surface-2)}
+.row .tx{flex:1;min-width:0}
+.row b{font-size:1.02rem}
+.row p,.fcard p{color:var(--mut);font-size:.88rem;margin-top:2px}
+.price{color:var(--gold);font-weight:700;white-space:nowrap;font-size:1.02rem}
+.fcard .price{display:block;margin-top:6px}
+.tag{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  background:var(--ember);color:#fff;padding:2px 8px;border-radius:6px;margin-left:6px;vertical-align:2px}
+
+/* INFO */
+.info{margin-top:40px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px;display:grid;gap:16px}
+.info div{display:flex;gap:12px}
+.info svg{color:var(--gold);margin-top:2px}
+.info b{display:block}
+.info span{color:var(--mut)}
+footer{text-align:center;color:var(--mut);font-size:.8rem;padding:24px 20px calc(28px + env(safe-area-inset-bottom))}
 </style>
 </head>
 <body>
-<header>
-  <h1>Sofram</h1>
-  <p>Kebap &amp; Türk Mutfağı · Niğde</p>
-  <span class="rate">★ 4,0 · 1.700+ Google yorumu</span>
-  <div class="btns">
-    <a href="tel:+903882210524">📞 Ara</a>
-    <a href="https://www.google.com/maps/search/?api=1&query=Sofram+Restaurant+Ni%C4%9Fde">📍 Yol tarifi</a>
+
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+</svg>
+
+<header class="hero">
+  <div class="hero-in">
+    <span class="eyebrow">Niğde · Kebap &amp; Izgara</span>
+    <h1>Sofram</h1>
+    <p class="sub">Közde pişen kebaplar, taş fırından pide ve lahmacun.</p>
+    <div class="meta">
+      <span class="pill"><svg><use href="#i-star"/></svg>4,0 · 1.700+ yorum</span>
+      <span class="pill"><svg><use href="#i-clock"/></svg><span id="durum">23:00'e kadar açık</span></span>
+    </div>
+    <div class="cta">
+      <a class="btn btn-p" href="tel:+903882210524"><svg><use href="#i-phone"/></svg>Ara</a>
+      <a class="btn btn-s" href="https://www.google.com/maps/search/?api=1&query=Sofram+Restaurant+Ni%C4%9Fde"><svg><use href="#i-pin"/></svg>Yol tarifi</a>
+    </div>
   </div>
 </header>
 
-<nav id="nav"></nav>
-<main id="menu"></main>
-
+<nav><div class="chips" id="nav"></div></nav>
 <main>
+  <div id="menu"></div>
+
   <div class="info">
-    <b>Adres</b><p>Aşağı Kayabaşı, Özdemirler Sitesi İç Yolu No:30, Niğde Merkez</p>
-    <br><b>Telefon</b><p><a href="tel:+903882210524">(0388) 221 05 24</a></p>
-    <br><b>Kapanış</b><p>Her gün 23:00</p>
+    <div><svg><use href="#i-pin"/></svg><p><b>Adres</b><span>Aşağı Kayabaşı, Özdemirler Sitesi İç Yolu No:30, Niğde Merkez</span></p></div>
+    <div><svg><use href="#i-phone"/></svg><p><b>Rezervasyon</b><a href="tel:+903882210524"><span>(0388) 221 05 24</span></a></p></div>
+    <div><svg><use href="#i-clock"/></svg><p><b>Çalışma saatleri</b><span>Her gün · 23:00'e kadar</span></p></div>
   </div>
 </main>
 <footer>Fiyatlara KDV dahildir.<br>Tanıtım amaçlı örnek sayfadır.</footer>
 
 <script>
 // Fiyatlar Yemeksepeti'den alındı (25.11.2026); restoranla teyit edilecek.
+// [ad, açıklama, fiyat, foto id, popüler?]
 const MENU = {
   "Kebap & Izgara": [
-    ["Adana Kebap","Közlenmiş biber, domates ile",490],
-    ["Tavuk Şiş","Közlenmiş biber, domates ile",490],
-    ["Tavuk Kanat","Közlenmiş biber, domates ile",480],
-    ["Kemikli Tavuk","Közlenmiş biber, domates ile",480],
-    ["Izgara Köfte","Izgara domates, biber, soğan ile",745],
-    ["Sarma Beyti","Lavaşa sarılı, yoğurtlu, soslu",895],
+    ["Adana Kebap","Közlenmiş biber, domates ile",490,"6600172",1],
+    ["Sarma Beyti","Lavaşa sarılı, yoğurtlu, soslu",895,"84904304",1],
+    ["Izgara Köfte","Izgara domates, biber, soğan ile",745,"85258084"],
+    ["Tavuk Şiş","Közlenmiş biber, domates ile",490,"6600179"],
+    ["Tavuk Kanat","Közlenmiş biber, domates ile",480,"6600180"],
+    ["Kemikli Tavuk","Közlenmiş biber, domates ile",480,"6600181"],
     ["Karışık Izgara","Kuzu pirzola, et şiş, köfte, tavuk, Adana",995],
     ["Kuzu İncik","Közlenmiş biber, domates ile",995],
     ["Kaburga Kafes","Kuzu kaburga, mevsim salata, günün mezesi",995],
     ["Yağlı Kara","Mevsim salata, günün mezesi ile",995]],
-  "Steak & Kırmızı Et": [
+  "Steak & Et": [
     ["Kuzu Pirzola","Mevsim salata, mezeler ile",995],
     ["Şaşlık Kebabı","Marine dana bonfile, salata, meze, lavaş",1145],
     ["Küşleme","Mevsim salata, günün mezesi ile",1145],
     ["Dana Lokum","Mevsim salata, mezeler ile",1245]],
   "Fırın": [
-    ["Antep Lahmacun","Domates, maydanoz, limon ile",245],
-    ["Konya Etli Ekmek","Közlenmiş biber, domates ile",445],
-    ["Kaşarlı Pide","Közlenmiş biber, domates ile",445],
-    ["Mevlana Pide","Dana kıyma, kaşar peyniri",475]],
+    ["Antep Lahmacun","Domates, maydanoz, limon ile",245,"6600185"],
+    ["Konya Etli Ekmek","Közlenmiş biber, domates ile",445,"6600186"],
+    ["Mevlana Pide","Dana kıyma, kaşar peyniri",475,"6600188"],
+    ["Kaşarlı Pide","Közlenmiş biber, domates ile",445,"6600189"]],
   "Tatlı": [
-    ["Künefe","Tek kişilik",345],
-    ["Katmer","Tek kişilik",375]]
+    ["Künefe","Tek kişilik, sıcak servis",345,"84904225"],
+    ["Katmer","Tek kişilik",375,"6600194"]]
 };
 const tl = n => n.toLocaleString("tr-TR") + " ₺";
 const slug = s => s.toLowerCase().replace(/[^a-zçğıöşü]+/g,"-");
-let nav="", html="";
+const img = (id,a) => `<img src="img/${id}.jpg" alt="${a}" loading="lazy" width="400" height="400">`;
+let nav = "", html = "";
 for (const [cat, items] of Object.entries(MENU)) {
-  nav += `<a href="#${slug(cat)}">${cat}</a>`;
-  html += `<h2 id="${slug(cat)}">${cat}</h2>` + items.map(([n,d,p]) =>
-    `<div class="item"><div><b>${n}</b><small>${d}</small></div><span class="p">${tl(p)}</span></div>`).join("");
+  const id = slug(cat);
+  nav += `<a class="chip" href="#${id}">${cat}</a>`;
+  // fotoğraflı ilk 2 ürün büyük kart, gerisi satır
+  const feat = items.filter(i => i[3]).slice(0, 2);
+  const rest = items.filter(i => !feat.includes(i));
+  html += `<section id="${id}"><h2>${cat}<small>${items.length} çeşit</small></h2>`
+    + (feat.length ? `<div class="feat">` + feat.map(([n,d,p,f,pop]) =>
+        `<article class="fcard">${img(f,n)}<div><b>${n}${pop?'<span class="tag">Popüler</span>':''}</b><p>${d}</p><span class="price">${tl(p)}</span></div></article>`).join("") + `</div>` : "")
+    + rest.map(([n,d,p,f,pop]) =>
+        `<div class="row">${f?img(f,n):""}<div class="tx"><b>${n}</b>${pop?'<span class="tag">Popüler</span>':''}<p>${d}</p></div><span class="price">${tl(p)}</span></div>`).join("")
+    + `</section>`;
 }
 document.getElementById("nav").innerHTML = nav;
 document.getElementById("menu").innerHTML = html;
+
+// aktif kategori çipi
+const chips = [...document.querySelectorAll(".chip")];
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (!e.isIntersecting) return;
+  chips.forEach(c => c.classList.toggle("on", c.hash === "#" + e.target.id));
+}), {rootMargin:"-40% 0px -55% 0px"});
+document.querySelectorAll("section").forEach(s => io.observe(s));
+
+// açılış saati bilinmiyor; sadece kapanışa göre
+const h = new Date().getHours();
+if (h >= 23 || h < 6) { const d = document.getElementById("durum"); d.textContent = "Şu an kapalı"; }
 </script>
 </body>
 </html>
