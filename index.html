@@ -5,81 +5,125 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Sofram · Menü</title>
 <meta name="description" content="Sofram Restaurant Niğde – kebap, ızgara, pide ve tatlı menüsü.">
-<meta name="theme-color" content="#16110d">
+<meta name="theme-color" content="#f3ece2">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500;700&family=Playfair+Display+SC:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,400;1,9..144,600&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#16110d; --surface:#211913; --surface-2:#2b2119; --line:#3a2d22;
-  --ink:#f6efe6; --mut:#b9a998; --ember:#e8692c; --gold:#d9a441;
-  --r:16px;
+  --cream:#f3ece2; --paper:#fbf7f1; --ink:#1d1611; --mut:#7b6c5e; --line:#e2d6c6;
+  --char:#1a1410; --ember:#c8461b; --ember-2:#e8692c; --gold:#b8862e;
+  --ease:cubic-bezier(.2,.7,.2,1);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
-body{background:var(--bg);color:var(--ink);font:16px/1.5 Karla,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
-a{color:inherit}
+body{background:var(--cream);color:var(--ink);font:16px/1.55 Manrope,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
 svg{width:20px;height:20px;flex:none}
+.serif{font-family:Fraunces,serif}
 
-/* HERO */
-.hero{position:relative;min-height:72vh;display:flex;align-items:flex-end;padding:0 20px 36px;
-  background:url(img/hero.jpg) center/cover;isolation:isolate}
-.hero::before{content:"";position:absolute;inset:0;z-index:-1;
-  background:linear-gradient(180deg,rgba(22,17,13,.15) 0%,rgba(22,17,13,.55) 45%,var(--bg) 100%)}
-.hero-in{max-width:720px;margin:0 auto;width:100%}
-.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:700}
-.eyebrow::before{content:"";width:28px;height:1px;background:var(--gold)}
-h1{font:700 clamp(3rem,13vw,4.6rem)/1 "Playfair Display SC",serif;margin:10px 0 8px;letter-spacing:.02em}
-.sub{color:var(--mut);font-size:1.05rem}
-.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
-.pill{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.08);backdrop-filter:blur(8px);
-  border:1px solid rgba(255,255,255,.12);padding:6px 12px;border-radius:99px;font-size:.88rem}
-.pill svg{width:15px;height:15px;color:var(--gold)}
-.open{color:#7fd6a0}
-.cta{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:22px}
-.btn{display:flex;align-items:center;justify-content:center;gap:8px;min-height:50px;border-radius:14px;
-  font-weight:700;text-decoration:none;transition:transform .15s,background .2s}
-.btn:active{transform:scale(.97)}
-.btn-p{background:var(--ember);color:#fff}
-.btn-s{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18)}
-.btn:focus-visible,.chip:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+/* ---------- HERO ---------- */
+.hero{position:relative;height:100svh;min-height:600px;overflow:hidden;color:#fff;display:flex;flex-direction:column;justify-content:flex-end}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.15);animation:kb 14s var(--ease) forwards}
+@keyframes kb{to{transform:scale(1)}}
+.hero::after{content:"";position:absolute;inset:0;background:
+  linear-gradient(180deg,rgba(20,14,10,.6) 0%,transparent 22%,transparent 38%,rgba(20,14,10,.75) 62%,rgba(20,14,10,.97) 100%)}
+.top{position:absolute;top:0;left:0;right:0;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:calc(18px + env(safe-area-inset-top)) 20px 0;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase}
+.hero-in{position:relative;z-index:2;padding:0 20px 34px;max-width:760px;margin:0 auto;width:100%}
+.kicker{font:italic 400 1.15rem Fraunces,serif;color:#f1c98a;opacity:0;animation:up .9s .2s var(--ease) forwards}
+.hero h1{font:700 clamp(4.2rem,24vw,8rem)/.85 Fraunces,serif;letter-spacing:-.03em;margin:6px 0 14px}
+.hero h1 span{display:inline-block;opacity:0;transform:translateY(60%);animation:up .9s var(--ease) forwards}
+.hero p{max-width:30ch;color:#e9dccb;opacity:0;animation:up .9s .7s var(--ease) forwards}
+.scroll{margin-top:26px;display:inline-flex;align-items:center;gap:10px;font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;opacity:0;animation:up .9s .9s var(--ease) forwards}
+.scroll i{width:1px;height:38px;background:linear-gradient(#fff,transparent);animation:drip 1.8s infinite}
+@keyframes up{to{opacity:1;transform:none}}
+@keyframes drip{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 
-/* NAV */
-nav{position:sticky;top:0;z-index:5;background:rgba(22,17,13,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.chips{display:flex;gap:8px;overflow-x:auto;padding:12px 20px;max-width:720px;margin:auto;scrollbar-width:none}
+/* ---------- MARQUEE ---------- */
+.marq{background:var(--ember);color:#fff;overflow:hidden;white-space:nowrap;padding:14px 0;font:italic 600 1.25rem Fraunces,serif}
+.marq div{display:inline-block;animation:mq 26s linear infinite}
+.marq b{font-style:normal;margin:0 18px;opacity:.6}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* ---------- NAV ---------- */
+nav{position:sticky;top:0;z-index:10;background:rgba(243,236,226,.85);backdrop-filter:blur(14px) saturate(1.4);border-bottom:1px solid var(--line)}
+.chips{display:flex;gap:6px;overflow-x:auto;padding:10px 16px;max-width:760px;margin:auto;scrollbar-width:none}
 .chips::-webkit-scrollbar{display:none}
-.chip{flex:none;min-height:40px;display:flex;align-items:center;padding:0 16px;border-radius:99px;text-decoration:none;
-  border:1px solid var(--line);color:var(--mut);font-weight:500;font-size:.93rem;transition:all .2s}
-.chip.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip{flex:none;min-height:40px;display:flex;align-items:center;padding:0 16px;border-radius:99px;font-weight:500;font-size:.92rem;color:var(--mut);transition:all .3s var(--ease)}
+.chip.on{background:var(--ink);color:var(--cream)}
 
-/* MENU */
-main{max-width:720px;margin:auto;padding:8px 20px 24px}
-section{padding-top:32px;scroll-margin-top:64px}
-h2{font:700 1.7rem "Playfair Display SC",serif;display:flex;align-items:baseline;gap:12px;margin-bottom:16px}
-h2 small{font:500 .85rem Karla,sans-serif;color:var(--mut)}
-.feat{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:12px}
-.fcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
-.fcard img{width:100%;aspect-ratio:1;object-fit:cover;display:block}
-.fcard div{padding:10px 12px 12px}
-.fcard b{display:block;font-size:1rem;line-height:1.25}
-.row{display:flex;gap:14px;align-items:center;padding:14px 0;border-bottom:1px dashed var(--line)}
-.row:last-child{border-bottom:0}
-.row img{width:76px;height:76px;border-radius:12px;object-fit:cover;flex:none;background:var(--surface-2)}
-.row .tx{flex:1;min-width:0}
-.row b{font-size:1.02rem}
-.row p,.fcard p{color:var(--mut);font-size:.88rem;margin-top:2px}
-.price{color:var(--gold);font-weight:700;white-space:nowrap;font-size:1.02rem}
-.fcard .price{display:block;margin-top:6px}
-.tag{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
-  background:var(--ember);color:#fff;padding:2px 8px;border-radius:6px;margin-left:6px;vertical-align:2px}
+/* ---------- SIGNATURE ---------- */
+.sig{padding:56px 0 8px}
+.head{max-width:760px;margin:0 auto;padding:0 20px 22px}
+.head small{display:block;font-size:.75rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ember);font-weight:700}
+.head h2{font:500 clamp(2.2rem,9vw,3.2rem)/1 Fraunces,serif;letter-spacing:-.02em;margin-top:8px}
+.head h2 em{font-weight:400;color:var(--gold)}
+.rail{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 20px 24px;scrollbar-width:none}
+.rail::-webkit-scrollbar{display:none}
+.card{flex:0 0 76%;max-width:320px;scroll-snap-align:start;position:relative;border-radius:22px;overflow:hidden;aspect-ratio:3/4;color:#fff;
+  box-shadow:0 20px 40px -20px rgba(60,30,10,.45)}
+.card img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.card:hover img{transform:scale(1.06)}
+.card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(15,10,6,.88))}
+.card div{position:absolute;left:18px;right:18px;bottom:16px;z-index:1}
+.card h3{font:600 1.6rem/1.05 Fraunces,serif}
+.card p{font-size:.88rem;opacity:.8;margin-top:4px}
+.card .pr{display:inline-block;margin-top:10px;background:#fff;color:var(--ink);font-weight:700;padding:5px 12px;border-radius:99px;font-size:.9rem}
+.num{position:absolute;top:14px;left:16px;z-index:1;font:italic 600 1rem Fraunces,serif;opacity:.9}
 
-/* INFO */
-.info{margin-top:40px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px;display:grid;gap:16px}
-.info div{display:flex;gap:12px}
-.info svg{color:var(--gold);margin-top:2px}
-.info b{display:block}
-.info span{color:var(--mut)}
-footer{text-align:center;color:var(--mut);font-size:.8rem;padding:24px 20px calc(28px + env(safe-area-inset-bottom))}
+/* ---------- MENU ---------- */
+main{max-width:760px;margin:0 auto;padding:0 20px}
+section.cat{padding:52px 0 8px;scroll-margin-top:62px}
+.cat-h{display:flex;align-items:end;justify-content:space-between;border-bottom:2px solid var(--ink);padding-bottom:10px;margin-bottom:6px}
+.cat-h h2{font:500 2.1rem/1 Fraunces,serif;letter-spacing:-.02em}
+.cat-h span{font:italic 400 1rem Fraunces,serif;color:var(--mut)}
+.it{display:grid;grid-template-columns:1fr auto;gap:2px 14px;padding:16px 0;border-bottom:1px solid var(--line);align-items:center}
+.it.ph{grid-template-columns:64px 1fr auto}
+.it img{width:64px;height:64px;border-radius:50%;object-fit:cover;grid-row:span 2;box-shadow:0 6px 14px -6px rgba(60,30,10,.5)}
+.it h4{font:600 1.12rem/1.2 Fraunces,serif;display:flex;align-items:baseline;gap:8px;min-width:0}
+.it h4::after{content:"";flex:1;border-bottom:1px dotted #c7b59f;transform:translateY(-4px);min-width:16px}
+.it .pr{font-weight:700;color:var(--ember);white-space:nowrap}
+.it p{grid-column:1/-1;color:var(--mut);font-size:.88rem}
+.it.ph p{grid-column:2/-1}
+.hot{font:700 .62rem Manrope,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--ember);padding:3px 7px;border-radius:5px;flex:none}
+
+/* ---------- İKRAM ---------- */
+.ikram{margin:56px 0 0;background:var(--char);color:var(--cream);border-radius:26px;padding:34px 24px;position:relative;overflow:hidden}
+.ikram::before{content:"";position:absolute;width:260px;height:260px;right:-80px;top:-80px;border-radius:50%;background:radial-gradient(var(--ember-2),transparent 65%);opacity:.45}
+.ikram small{font-size:.75rem;letter-spacing:.22em;text-transform:uppercase;color:#f1c98a;font-weight:700}
+.ikram h3{font:500 2rem/1.05 Fraunces,serif;margin:8px 0 10px;position:relative}
+.ikram h3 em{color:#f1c98a}
+.ikram p{color:#cdbfae;position:relative}
+
+/* ---------- INFO ---------- */
+.info{display:grid;gap:2px;margin:24px 0 0;border-radius:22px;overflow:hidden}
+.info a,.info div{display:flex;gap:14px;align-items:center;background:var(--paper);padding:18px 20px}
+.info svg{color:var(--ember)}
+.info b{display:block;font-size:.95rem}
+.info span{color:var(--mut);font-size:.9rem}
+footer{text-align:center;color:var(--mut);font-size:.8rem;padding:40px 20px calc(110px + env(safe-area-inset-bottom))}
+footer .serif{font-size:2.2rem;color:var(--ink);display:block;margin-bottom:6px}
+
+/* ---------- ACTION BAR ---------- */
+.bar{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:20;display:grid;grid-template-columns:1fr 1fr;gap:8px;
+  max-width:460px;margin:auto;background:rgba(26,20,16,.92);backdrop-filter:blur(14px);padding:8px;border-radius:20px;
+  box-shadow:0 18px 40px -12px rgba(0,0,0,.5);transform:translateY(140%);transition:transform .5s var(--ease)}
+.bar.show{transform:none}
+.bar a{display:flex;align-items:center;justify-content:center;gap:8px;min-height:50px;border-radius:14px;font-weight:700;color:#fff;transition:transform .15s}
+.bar a:active{transform:scale(.96)}
+.bar a:first-child{background:var(--ember)}
+.bar a:last-child{background:rgba(255,255,255,.1)}
+a:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+
+/* ---------- REVEAL ---------- */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .rv,.hero h1 span,.kicker,.hero p,.scroll{opacity:1!important;transform:none!important}
+  .hero img{transform:none}
+}
+@media (min-width:700px){.card{flex-basis:300px}}
 </style>
 </head>
 <body>
@@ -87,40 +131,57 @@ footer{text-align:center;color:var(--mut);font-size:.8rem;padding:24px 20px calc
 <svg style="display:none" xmlns="http://www.w3.org/2000/svg">
   <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></symbol>
   <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol>
-  <symbol id="i-star" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></symbol>
   <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
 </svg>
 
 <header class="hero">
+  <img src="img/hero.jpg" alt="Sofram'da kebap ve meze sofrası" fetchpriority="high">
+  <div class="top"><span>Niğde</span><span id="durum">23:00'e kadar açık</span></div>
   <div class="hero-in">
-    <span class="eyebrow">Niğde · Kebap &amp; Izgara</span>
-    <h1>Sofram</h1>
-    <p class="sub">Közde pişen kebaplar, taş fırından pide ve lahmacun.</p>
-    <div class="meta">
-      <span class="pill"><svg><use href="#i-star"/></svg>4,0 · 1.700+ yorum</span>
-      <span class="pill"><svg><use href="#i-clock"/></svg><span id="durum">23:00'e kadar açık</span></span>
-    </div>
-    <div class="cta">
-      <a class="btn btn-p" href="tel:+903882210524"><svg><use href="#i-phone"/></svg>Ara</a>
-      <a class="btn btn-s" href="https://www.google.com/maps/search/?api=1&query=Sofram+Restaurant+Ni%C4%9Fde"><svg><use href="#i-pin"/></svg>Yol tarifi</a>
-    </div>
+    <div class="kicker">közden sofraya</div>
+    <h1 aria-label="Sofram"><span>So</span><span style="animation-delay:.12s">fr</span><span style="animation-delay:.24s">am</span></h1>
+    <p>Kebap, ızgara, taş fırından pide ve lahmacun.</p>
+    <a class="scroll" href="#imza"><i></i>Menüyü keşfet</a>
   </div>
 </header>
 
+<div class="marq" aria-hidden="true"><div>
+  Adana <b>✦</b> Beyti <b>✦</b> Kuzu Pirzola <b>✦</b> Etli Ekmek <b>✦</b> Künefe <b>✦</b> Lahmacun <b>✦</b>
+  Adana <b>✦</b> Beyti <b>✦</b> Kuzu Pirzola <b>✦</b> Etli Ekmek <b>✦</b> Künefe <b>✦</b> Lahmacun <b>✦</b>
+</div></div>
+
+<section class="sig" id="imza">
+  <div class="head rv"><small>Ustanın seçtikleri</small><h2>Sofranın <em>yıldızları</em></h2></div>
+  <div class="rail" id="rail"></div>
+</section>
+
 <nav><div class="chips" id="nav"></div></nav>
+
 <main>
   <div id="menu"></div>
 
-  <div class="info">
-    <div><svg><use href="#i-pin"/></svg><p><b>Adres</b><span>Aşağı Kayabaşı, Özdemirler Sitesi İç Yolu No:30, Niğde Merkez</span></p></div>
-    <div><svg><use href="#i-phone"/></svg><p><b>Rezervasyon</b><a href="tel:+903882210524"><span>(0388) 221 05 24</span></a></p></div>
-    <div><svg><use href="#i-clock"/></svg><p><b>Çalışma saatleri</b><span>Her gün · 23:00'e kadar</span></p></div>
+  <div class="ikram rv">
+    <small>Masaya ikram</small>
+    <h3>Sıcak <em>bazlama</em> ve günün mezeleri</h3>
+    <p>Yemeğinizden önce masanıza gelir. Yemekten sonra çay ve kahve bizden.</p>
+  </div>
+
+  <div class="info rv">
+    <a href="https://www.google.com/maps/search/?api=1&query=Sofram+Restaurant+Ni%C4%9Fde"><svg><use href="#i-pin"/></svg><p><b>Aşağı Kayabaşı</b><span>Özdemirler Sitesi İç Yolu No:30, Niğde</span></p></a>
+    <a href="tel:+903882210524"><svg><use href="#i-phone"/></svg><p><b>(0388) 221 05 24</b><span>Rezervasyon ve paket</span></p></a>
+    <div><svg><use href="#i-clock"/></svg><p><b>Her gün</b><span>23:00'e kadar</span></p></div>
   </div>
 </main>
-<footer>Fiyatlara KDV dahildir.<br>Tanıtım amaçlı örnek sayfadır.</footer>
+
+<footer><span class="serif">Sofram</span>Fiyatlara KDV dahildir.<br>Tanıtım amaçlı örnek sayfadır.</footer>
+
+<div class="bar" id="bar">
+  <a href="tel:+903882210524"><svg><use href="#i-phone"/></svg>Ara</a>
+  <a href="https://www.google.com/maps/search/?api=1&query=Sofram+Restaurant+Ni%C4%9Fde"><svg><use href="#i-pin"/></svg>Yol tarifi</a>
+</div>
 
 <script>
-// Fiyatlar Yemeksepeti'den alındı (25.11.2026); restoranla teyit edilecek.
+// Fiyatlar Yemeksepeti'den (25.11.2026); restoranla teyit edilecek.
 // [ad, açıklama, fiyat, foto id, popüler?]
 const MENU = {
   "Kebap & Izgara": [
@@ -140,45 +201,57 @@ const MENU = {
     ["Küşleme","Mevsim salata, günün mezesi ile",1145],
     ["Dana Lokum","Mevsim salata, mezeler ile",1245]],
   "Fırın": [
+    ["Konya Etli Ekmek","İncecik, çıtır hamur",445,"6600186",1],
     ["Antep Lahmacun","Domates, maydanoz, limon ile",245,"6600185"],
-    ["Konya Etli Ekmek","Közlenmiş biber, domates ile",445,"6600186"],
     ["Mevlana Pide","Dana kıyma, kaşar peyniri",475,"6600188"],
     ["Kaşarlı Pide","Közlenmiş biber, domates ile",445,"6600189"]],
   "Tatlı": [
     ["Künefe","Tek kişilik, sıcak servis",345,"84904225"],
     ["Katmer","Tek kişilik",375,"6600194"]]
 };
+const SIG = ["Adana Kebap","Sarma Beyti","Konya Etli Ekmek","Izgara Köfte","Künefe"];
+
 const tl = n => n.toLocaleString("tr-TR") + " ₺";
 const slug = s => s.toLowerCase().replace(/[^a-zçğıöşü]+/g,"-");
-const img = (id,a) => `<img src="img/${id}.jpg" alt="${a}" loading="lazy" width="400" height="400">`;
+const all = Object.values(MENU).flat();
+
+document.getElementById("rail").innerHTML = SIG.map((n,i) => {
+  const [ad,d,p,f] = all.find(x => x[0] === n);
+  return `<article class="card rv" style="transition-delay:${i*80}ms"><span class="num">0${i+1}</span>
+    <img src="img/${f}.jpg" alt="${ad}" loading="lazy"><div><h3>${ad}</h3><p>${d}</p><span class="pr">${tl(p)}</span></div></article>`;
+}).join("");
+
 let nav = "", html = "";
 for (const [cat, items] of Object.entries(MENU)) {
   const id = slug(cat);
   nav += `<a class="chip" href="#${id}">${cat}</a>`;
-  // fotoğraflı ilk 2 ürün büyük kart, gerisi satır
-  const feat = items.filter(i => i[3]).slice(0, 2);
-  const rest = items.filter(i => !feat.includes(i));
-  html += `<section id="${id}"><h2>${cat}<small>${items.length} çeşit</small></h2>`
-    + (feat.length ? `<div class="feat">` + feat.map(([n,d,p,f,pop]) =>
-        `<article class="fcard">${img(f,n)}<div><b>${n}${pop?'<span class="tag">Popüler</span>':''}</b><p>${d}</p><span class="price">${tl(p)}</span></div></article>`).join("") + `</div>` : "")
-    + rest.map(([n,d,p,f,pop]) =>
-        `<div class="row">${f?img(f,n):""}<div class="tx"><b>${n}</b>${pop?'<span class="tag">Popüler</span>':''}<p>${d}</p></div><span class="price">${tl(p)}</span></div>`).join("")
+  html += `<section class="cat" id="${id}"><div class="cat-h rv"><h2>${cat}</h2><span>${items.length} çeşit</span></div>`
+    + items.map(([n,d,p,f,hot]) => `<div class="it rv${f?' ph':''}">${f?`<img src="img/${f}.jpg" alt="" loading="lazy">`:''}
+        <h4>${n}${hot?'<span class="hot">Favori</span>':''}</h4><span class="pr">${tl(p)}</span><p>${d}</p></div>`).join("")
     + `</section>`;
 }
 document.getElementById("nav").innerHTML = nav;
 document.getElementById("menu").innerHTML = html;
 
-// aktif kategori çipi
+// kaydırınca belirme
+const rv = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); rv.unobserve(e.target); } }), {threshold:.12});
+document.querySelectorAll(".rv").forEach(el => rv.observe(el));
+
+// aktif kategori
 const chips = [...document.querySelectorAll(".chip")];
 const io = new IntersectionObserver(es => es.forEach(e => {
   if (!e.isIntersecting) return;
   chips.forEach(c => c.classList.toggle("on", c.hash === "#" + e.target.id));
 }), {rootMargin:"-40% 0px -55% 0px"});
-document.querySelectorAll("section").forEach(s => io.observe(s));
+document.querySelectorAll("section.cat").forEach(s => io.observe(s));
 
-// açılış saati bilinmiyor; sadece kapanışa göre
+// alt bar hero'dan sonra çıkar
+const bar = document.getElementById("bar");
+new IntersectionObserver(([e]) => bar.classList.toggle("show", !e.isIntersecting)).observe(document.querySelector(".hero"));
+
+// açılış saati bilinmiyor; yalnızca kapanışa göre
 const h = new Date().getHours();
-if (h >= 23 || h < 6) { const d = document.getElementById("durum"); d.textContent = "Şu an kapalı"; }
+if (h >= 23 || h < 6) document.getElementById("durum").textContent = "Şu an kapalı";
 </script>
 </body>
 </html>
