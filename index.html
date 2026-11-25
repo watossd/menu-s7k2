@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Sofram · Menü</title>
 <meta name="description" content="Sofram Restaurant Niğde – kebap, ızgara, pide ve tatlı menüsü.">
-<meta name="theme-color" content="#f3ece2">
+<meta name="theme-color" content="#120d0a">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,400;1,9..144,600&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
@@ -114,6 +114,31 @@ footer .serif{font-size:2.2rem;color:var(--ink);display:block;margin-bottom:6px}
 .bar a:last-child{background:rgba(255,255,255,.1)}
 a:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 
+/* ---------- KOYU MENÜ BÖLÜMÜ ---------- */
+.dark{--ink:#f4ece1;--mut:#a89884;--line:#33281f;--paper:#211913;--gold:#d9a441;
+  background:linear-gradient(180deg,#120d0a,#1a130e 40%,#120d0a);color:var(--ink);margin-top:40px;
+  border-radius:28px 28px 0 0;position:relative}
+.dark nav{background:rgba(18,13,10,.82);border-color:var(--line);border-radius:28px 28px 0 0}
+.dark .chip{color:var(--mut);border:1px solid var(--line)}
+.dark .chip.on{background:linear-gradient(135deg,#e2b65a,#b8862e);color:#1a130e;border-color:transparent}
+.dark .cat-h{border-bottom:1px solid rgba(217,164,65,.45)}
+.dark .cat-h h2{color:#f4ece1}
+.dark .cat-h span{color:var(--gold)}
+.dark .it,.dark .it.ph{grid-template-columns:1fr auto;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:12px 14px;margin-top:10px;
+  transition:border-color .3s,transform .3s var(--ease)}
+.dark .it.ph{grid-template-columns:76px 1fr auto}
+.dark .it:hover{border-color:rgba(217,164,65,.5)}
+.dark .it img{width:76px;height:76px;border-radius:12px;box-shadow:none}
+.dark .it h4{color:#f4ece1}
+.dark .it h4::after{display:none}
+.dark .it .pr{color:var(--gold);font-size:1.05rem}
+.dark .hot{background:transparent;color:var(--gold);border:1px solid rgba(217,164,65,.6)}
+.dark .ikram{background:linear-gradient(135deg,#2a1d13,#1c140e);border:1px solid rgba(217,164,65,.25)}
+.dark .info a,.dark .info div{background:var(--paper)}
+.dark .info svg{color:var(--gold)}
+.dark .info{border:1px solid var(--line)}
+.dark footer .serif{color:#f4ece1}
+
 /* ---------- REVEAL ---------- */
 .rv{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
 .rv.in{opacity:1;transform:none}
@@ -155,6 +180,7 @@ a:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
   <div class="rail" id="rail"></div>
 </section>
 
+<div class="dark">
 <nav><div class="chips" id="nav"></div></nav>
 
 <main>
@@ -174,6 +200,7 @@ a:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 </main>
 
 <footer><span class="serif">Sofram</span>Fiyatlara KDV dahildir.<br>Tanıtım amaçlı örnek sayfadır.</footer>
+</div>
 
 <div class="bar" id="bar">
   <a href="tel:+903882210524"><svg><use href="#i-phone"/></svg>Ara</a>
